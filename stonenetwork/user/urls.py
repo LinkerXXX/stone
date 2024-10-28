@@ -1,5 +1,6 @@
 from django.urls import path
-from user import views as us
+from user.views import UserDetailView
 
 urlpatterns = [
+    path("<int:pk>/", UserDetailView.as_view(), name="user_detail"),
 ]

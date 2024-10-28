@@ -1,5 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.detail import DetailView
+from user.models import User
 
-# def index(request):
-#     return HttpResponse('Страница пупы и лупы')
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'user/user_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

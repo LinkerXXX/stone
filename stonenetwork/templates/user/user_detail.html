@@ -1,0 +1,20 @@
+<!-- user_detail.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали пользователя</title>
+</head>
+<body>
+    <h1>Детали пользователя: {{ user.identify }}</h1>
+    <ul>
+        <li><strong>Логин:</strong> {{ user.nick }}</li>
+        <li><strong>Имя:</strong> {{ user.first_name }}</li>
+        <li><strong>Фамилия:</strong> {{ user.last_name }}</li>
+        <li><strong>Дата регистрации:</strong> {{ user.registration_date }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Идентификатор:</strong> {{ user.identify }}</li>
+    </ul>
+</body>
+</html>
