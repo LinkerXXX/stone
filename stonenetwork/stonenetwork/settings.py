@@ -114,6 +114,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+MEDIA_URL = "/images/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "images")
+
+MEDIA_USER_IMAGE_DIR = "user/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -124,3 +129,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

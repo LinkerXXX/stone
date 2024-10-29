@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class User(models.Model):
 
@@ -8,8 +9,7 @@ class User(models.Model):
     registration_date = models.DateTimeField(auto_now_add = True)
     email = models.EmailField(max_length=50, unique = True, blank = False)
     identify = models.SlugField(max_length=20)
-    avatar = models.ImageField(width_field = 100, height_field = 100, verbose_name = "Фотография пользователя", blank = True, upload_to='images/')
-
+    avatar = models.ImageField(verbose_name = "Фотография пользователя", blank = True, upload_to=settings.MEDIA_USER_IMAGE_DIR,)
 
     class Meta:
         

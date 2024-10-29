@@ -1,5 +1,6 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.views import LoginView
 from user.models import User
 
 class UserDetailView(DetailView):
@@ -16,3 +17,9 @@ class UserCreateView(CreateView):
     template_name = 'user/user_create.html'
     fields = ['nick', 'first_name', 'last_name', 'email', 'avatar', 'identify']
     success_url = '/user/{id}'
+
+
+class UserLoginView(LoginView):
+    model = User
+    template_name = 'user/user_login.html'
+    redirect_authenticated_user = '/user/{id}'
