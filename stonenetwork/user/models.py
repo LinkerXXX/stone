@@ -8,7 +8,7 @@ class User(models.Model):
     registration_date = models.DateTimeField(auto_now_add = True)
     email = models.EmailField(max_length=50, unique = True, blank = False)
     identify = models.SlugField(max_length=20)
-    avatar = models.ImageField(width_field = 100, height_field = 100, verbose_name = "Фотография пользователя")
+    avatar = models.ImageField(width_field = 100, height_field = 100, verbose_name = "Фотография пользователя", blank = True, upload_to='images/')
 
 
     class Meta:
