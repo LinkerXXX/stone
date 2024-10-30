@@ -1,0 +1,14 @@
+<header>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Название сайта</h1>
+        <div>
+            {% if user.is_authenticated %}
+                <span>Привет, {{ user.username }}!</span>
+                <a>Выйти</a>
+            {% else %}
+                <span>Пользователь не авторизован!</span>
+                <a href="{% url 'user_login' %}">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

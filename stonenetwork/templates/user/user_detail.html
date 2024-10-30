@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
+    <header>
+        {% include 'page/header.html' %}
+    </header>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +15,7 @@
         <li>
             <strong>Фотография:</strong>
             {% if user.avatar %}
-                <img src="{{ user.avatar.url }}" width="500" height="700" alt=""> 
+                <img src="{{ user.avatar.url }}" width="100" height="200" alt=""> 
             {% else %}
                 <p>Фотография не загружена.</p>
             {% endif %}
