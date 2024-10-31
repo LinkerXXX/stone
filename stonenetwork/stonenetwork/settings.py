@@ -42,6 +42,10 @@ INSTALLED_APPS = [
 
 ]
 
+LOGOUT_REDIRECT_URL = 'user_create'
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -130,3 +134,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  
+LOGOUT_REDIRECT_URL = 'user_create'
+
+AUTH_USER_MODEL = "user.User"

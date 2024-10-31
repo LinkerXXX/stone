@@ -5,11 +5,11 @@ from user.models import User
 class MOD_UserCreateForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['nick', 'first_name', 'last_name', 'email']
+        fields = ("username", "first_name", "last_name", "email")
 
 
 
 class UserAuthForm(AuthenticationForm):
     class Meta:
         model = User
-        fields = ("nick", "password")
+        fields = ("username", "password")

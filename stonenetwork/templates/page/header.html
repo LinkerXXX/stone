@@ -1,14 +1,17 @@
-<header>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
         <h1>Название сайта</h1>
         <div>
             {% if user.is_authenticated %}
+            {% csrf_token %}
                 <span>Привет, {{ user.username }}!</span>
-                <a>Выйти</a>
+                {{ user.email }}
+                <form method="post" action="{% url 'user_logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Выход</button>
+                </form>
             {% else %}
                 <span>Пользователь не авторизован!</span>
                 <a href="{% url 'user_login' %}">Войти</a>
             {% endif %}
         </div>
-    </div>
-</header>
+</div>

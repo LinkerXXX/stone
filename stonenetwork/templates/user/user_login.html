@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход в систему</title>
-</head>
+
+<header>
+  {% include 'page/header.html' %}
+</header>
+
 <body>
-    <div class="container">
-        <h2>Вход в систему</h2>
+  <main class="container">
+    <div class="row">
+      <div class="col-8 col-lg-4 offset-2 offset-lg-4">
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'user_logout' %}">
+          {% csrf_token %}
+          <button type="submit">Выход</button>
+      </form>
+        {% else %}
         <form method="post" action="{% url 'user_login' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nick">Логин:</label>
-                <input type="text" id="nick" name="nick" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="checkbox mb-3"></div>
-            <input type="submit" value="Войти">
+          {% csrf_token %}
+          <div class="mt-5 form-label-group">
+            <p>
+                <label for="id_username">Логин:</label>
+                <input type="text" name="username" maxlength="150" autofocus required id="id_username">
+              </p>
+          </div>
+
+          <div class="form-label-group">
+            <p>
+                <label for="id_password">Пароль:</label>
+                <input type="password" name="password" required id="id_password">
+              </p>
+          </div>
+
+          <div class="checkbox mb-3"></div>
+          <input type="submit" value="Войти">
         </form>
-        <p>Нет аккаунта? <a href="{% url 'user_create' %}">Зарегистрируйтесь</a></p>
+        {% endif %}
+        <div class="mt-4 text-center"><p>Нет аккаунта? <a href="{% url 'user_create' %}">Зарегистрируйтесь!</a></p></div>
+      </div>
     </div>
+  </main>
 </body>
 </html>

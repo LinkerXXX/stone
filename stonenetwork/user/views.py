@@ -1,8 +1,9 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from user.models import User
 from user.forms import MOD_UserCreateForm, UserAuthForm
+from django.urls import reverse_lazy
 
 
 class UserDetailView(DetailView):
@@ -22,7 +23,9 @@ class UserCreateView(CreateView):
 
 
 class UserLoginView(LoginView):
-    model = User
-    template_name = 'user/user_login.html'
     form_class = UserAuthForm
-        
+    template_name = 'user/user_login.html'
+
+    def get_success_url(self):
+        user_id = self.request.user.id
+        return reverse_lazy('user_detail', kwargs={'pk': user_id})

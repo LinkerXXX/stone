@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% csrf_token %}
 <html lang="ru">
     <header>
         {% include 'page/header.html' %}
@@ -10,7 +11,6 @@
     {% load static %}
 </head>
 <body>
-    <h1>Детали пользователя: {{ user.identify }}</h1>
     <ul>
         <li>
             <strong>Фотография:</strong>
@@ -20,12 +20,11 @@
                 <p>Фотография не загружена.</p>
             {% endif %}
         </li>
-        <li><strong>Логин:</strong> {{ user.nick }}</li>
+        <li><strong>Логин:</strong> {{ user.username }}</li>
         <li><strong>Имя:</strong> {{ user.first_name }}</li>
         <li><strong>Фамилия:</strong> {{ user.last_name }}</li>
         <li><strong>Дата регистрации:</strong> {{ user.registration_date }}</li>
         <li><strong>Email:</strong> {{ user.email }}</li>
-        <li><strong>Идентификатор:</strong> {{ user.identify }}</li>
     </ul>
 </body>
 </html>
