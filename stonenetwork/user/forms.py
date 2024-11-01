@@ -8,7 +8,6 @@ class MOD_UserCreateForm(UserCreationForm):
         fields = ("username", "first_name", "last_name", "email")
 
 
-
 class UserAuthForm(AuthenticationForm):
     class Meta:
         model = User
