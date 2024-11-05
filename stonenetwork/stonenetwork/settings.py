@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "user",
+    "board",
 ]
 
 LOGOUT_REDIRECT_URL = "user_create"

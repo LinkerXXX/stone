@@ -3,9 +3,9 @@
         <div>
             {% if user.is_authenticated %}
             {% csrf_token %}
-                <span>Привет, {{ user.username }}!</span>
-                <a href="{% url 'user_update' user.id %}">Редактировать профиль</a>
-                {{ user.email }}
+                <span>Привет, {{ request.user.username }}!</span>
+                <a href="{% url 'user_update' request.user.id %}">Редактировать профиль</a>
+                {{ request.user.email }}
                 <form method="post" action="{% url 'user_logout' %}">
                     {% csrf_token %}
                     <button type="submit">Выход</button>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <header>
+        {% include 'page/header.html' %}
+    </header>
+<body>
+    <div class="container">
+        <h1>Список записей</h1>
+        <ul>
+            {% for note in notes %}
+                <li>
+                    <h2>{{ note.name }}</h2>
+                    <p>{{ note.text }}</p>
+                    <p><strong>Автор:</strong> {{ note.user.username }}</p>
+                    <p><strong>Дата создания:</strong> {{ note.creation_date|date:"d M Y H:i" }}</p>
+                </li>
+            {% empty %}
+                <li>Записей нет.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
