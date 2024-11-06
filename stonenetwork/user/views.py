@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from user.models import User
 from user.forms import MOD_UserCreateForm, UserAuthForm
 from django.urls import reverse_lazy
+from board.models import Note
 
 
 class UserDetailView(DetailView):
@@ -12,6 +13,8 @@ class UserDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context["notes"] = Note.objects.filter(user=user)
         return context
 
 

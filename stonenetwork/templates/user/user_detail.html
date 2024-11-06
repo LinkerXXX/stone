@@ -1,9 +1,6 @@
+
 <!DOCTYPE html>
-{% csrf_token %}
 <html lang="ru">
-    <header>
-        {% include 'page/header.html' %}
-    </header>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +8,12 @@
     {% load static %}
 </head>
 <body>
+    <header>
+        {% include 'page/header.html' %}
+    </header>
+    {% if user.id == request.user.id %}
+        <a href="{% url 'board_note_create'  %}">Создать запись</a>
+    {% endif %}
     <ul>
         <li>
             <strong>Фотография:</strong>
@@ -25,6 +28,20 @@
         <li><strong>Фамилия:</strong> {{ user.last_name }}</li>
         <li><strong>Дата регистрации:</strong> {{ user.registration_date }}</li>
         <li><strong>Email:</strong> {{ user.email }}</li>
+    </ul>
+
+    <h1>Список записей пользователя</h1>
+    <ul>
+        {% for note in notes %}
+            <li>
+                <h2>{{ note.name }}</h2>
+                <p>{{ note.text }}</p>
+                <p><strong>Автор:</strong> {{ note.user.username }}</p>
+                <p><strong>Дата создания:</strong> {{ note.creation_date|date:"d M Y H:i" }}</p>
+            </li>
+        {% empty %}
+            <li>Записей нет.</li>
+        {% endfor %}
     </ul>
 </body>
 </html>
