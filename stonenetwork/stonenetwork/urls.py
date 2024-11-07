@@ -20,9 +20,10 @@ from django.urls import path, include
 from user import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from board.views import NoteListView
 
 urlpatterns = [
+    path("", NoteListView.as_view(), name="board_note_list"),
     path("admin/", admin.site.urls),
     path("user/", include("user.urls")),
     path("board/", include("board.urls")),
