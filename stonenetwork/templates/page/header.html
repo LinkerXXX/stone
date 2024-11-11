@@ -4,12 +4,17 @@
             {% if user.is_authenticated %}
             {% csrf_token %}
                 <span>Привет, {{ request.user.username }}!</span>
-                <a href="{% url 'user_update' request.user.id %}">Редактировать профиль</a>
-                {{ request.user.email }}
+                Почта: {{ request.user.email }}
+                <h3>Сейчас ты можешь сделать это:</h3>
+                <li><a href="{% url 'user_detail' request.user.id %}">Профиль</a></li>
+                <li><a href="{% url 'user_update' request.user.id %}">Редактировать профиль</a></li>
+                <li><a href="{% url 'user_list'%}">Просмотр всех пользователей</a></li>
+                <li><a href="{% url 'board_note_list'%}">Просмотр главной страницы</a></li>
                 <form method="post" action="{% url 'user_logout' %}">
-                    {% csrf_token %}
-                    <button type="submit">Выход</button>
+                        {% csrf_token %}
+                        <button type="submit">Выход</button>
                 </form>
+            
             {% else %}
                 <span>Пользователь не авторизован!</span>
                 <a href="{% url 'user_login' %}">Войти</a>

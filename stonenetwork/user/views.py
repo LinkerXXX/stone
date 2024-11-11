@@ -1,10 +1,11 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from user.models import User
 from user.forms import MOD_UserCreateForm, UserAuthForm
 from django.urls import reverse_lazy
 from board.models import Note
+from django.views.generic import ListView
 
 
 class UserDetailView(DetailView):
@@ -43,6 +44,12 @@ class UserUpdateView(UpdateView):
 
     def get_queryset(self):
         return User.objects.filter(pk=self.request.user.pk)
+
+
+class UserListView(ListView):
+    model = User
+    template_name = "user/user_list.html"
+    context_object_name = "users"
 
 
 # ЗАДАЧА !!!!! добавить вывод дебаг информации, чтобы понимать, что происходит

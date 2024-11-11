@@ -12,7 +12,7 @@
                 <li>
                     <h2>{{ note.name }}</h2>
                     <p>{{ note.text }}</p>
-                    <p><strong>Автор:</strong> {{ note.user.username }}</p>
+                    <p><strong>Автор:</strong><a href="{% url 'user_detail' note.user.id  %}">{{ note.user.username }}</a></p>
                     <p><strong>Дата создания:</strong> {{ note.creation_date|date:"d M Y H:i" }}</p>
                 </li>
             {% empty %}
